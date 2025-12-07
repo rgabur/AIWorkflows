@@ -1,7 +1,11 @@
 🚀 Features
+🤖 AI Chatbot Interaction
 
-AI-driven appointment extraction
-Automatically identifies:
+User sends a message (WhatsApp / Telegram / Website / API).
+
+Chatbot understands natural language using an LLM.
+
+Extracts:
 
 Client name
 
@@ -9,104 +13,122 @@ Email address
 
 Date & time
 
-Meeting purpose
+Purpose of meeting
 
-Google Calendar Integration
-Creates events automatically with:
+📅 Google Calendar Integration
+
+Automatically creates a meeting event with:
 
 Title
 
-Time & date
+Date & time
 
 Guest email
 
 Description
 
-Reminders (if configured)
+Optional Google Meet link (if enabled)
 
-Automated email confirmation
-Sends personalized confirmation emails to clients with full meeting details.
+📧 Automated Email Confirmation
 
-End-to-end automation
-From receiving message → extracting details → calendar event → confirmation email.
+After booking, the chatbot sends a confirmation email with:
 
-Fully customizable
-All nodes (AI, Email, Google Calendar, Templates) can be modified easily.
+Meeting details
+
+Calendar event info
+
+Purpose of meeting
+
+Any instructions or links
+
+🔁 End-to-End Automation
+
+User → Chatbot → AI Understanding → Calendar Event → Email Confirmation → Done.
 
 🛠️ Tech Stack
 
-n8n – Workflow orchestration
+n8n — workflow automation platform
 
-AI/LLM Node – Extracting structured appointment details
+LLM / AI Node — natural language understanding
 
-Google Calendar Node – Creating calendar events
+Google Calendar Node — for event creation
 
-Email Node – Sending confirmation emails
+Email Node (SMTP / Gmail) — for confirmation emails
 
-Webhook / Trigger Node – Entry point for appointment requests
+Webhook / Chatbot Trigger — depending on platform (WhatsApp, Telegram, Webchat, etc.)
 
 📂 Workflow Overview
 
-Trigger Input
-Workflow receives an appointment request (text message, form input, API call, etc.).
+Chatbot Trigger
+User sends a message like:
+"I want to book an appointment tomorrow at 3 PM to discuss my project."
 
 AI Node
-Extracts meaningful fields from free-text messages.
+Extracts structured fields:
 
-Field Validator
-Ensures required details (email, date, time) are present.
+name
+
+email
+
+date
+
+time
+
+purpose
+
+Validator
+Ensures required fields exist.
 
 Google Calendar Node
-Automatically creates a calendar event with:
-
-Title
-
-Date & Time
-
-Description
-
-Guest email
+Creates an event automatically.
 
 Email Confirmation Node
-Sends a client confirmation containing all booking details.
+Sends a personalized confirmation email to the client.
 
 ▶️ How to Use
+1. Import Workflow
 
-Import the workflow
+Download the JSON from the /workflows folder.
 
-Download the JSON file from this repository
+Import into n8n using Settings → Import from File.
 
-Go to n8n → Import from File
+2. Connect Chatbot Trigger
 
-Configure Google Calendar
+Examples:
 
-Add Google OAuth2 credentials
+WhatsApp Cloud API
 
-Select the calendar where events should be created
+Telegram Bot
 
-Set up Email credentials
+Webhook for website chat
 
-SMTP / Gmail / Outlook
+3. Add Google Calendar Credentials
 
-Add sender name & email
+Set up OAuth and assign the target calendar.
 
-Add AI API key
+4. Configure Email Node
 
-Update the AI/LLM node with your provider key
+Add SMTP / Gmail credentials.
 
-Activate and test the workflow
+5. Add AI API Key
 
-📧 Example Output Email
+Configure the LLM node (OpenAI / Groq / Claude / Gemini).
+
+6. Activate Workflow
+
+Test by sending the chatbot a sample appointment message.
+
+📧 Example Confirmation Email
 Subject: Your Appointment is Confirmed
 
 Hello <Client Name>,
 
-Your appointment has been successfully scheduled and added to your calendar.
+Your appointment has been successfully booked through our chatbot.
 
-📅 Date: <Date>  
-⏰ Time: <Time>  
-📌 Purpose: <Meeting Purpose>  
-📍 Calendar: Google Calendar Event Created
+📅 Date: <Date>
+⏰ Time: <Time>
+📌 Purpose: <Purpose>
+📍 Google Calendar event created
 
-Regards,  
+Regards,
 AI Appointment Assistant
