@@ -132,3 +132,6 @@ Your appointment has been successfully booked through our chatbot.
 
 Regards,
 AI Appointment Assistant
+
+you can access this chatbot using this link
+https://rgabur.app.n8n.cloud/webhook/3b721422-7c17-4542-b6b5-604d08f95f80/chat
